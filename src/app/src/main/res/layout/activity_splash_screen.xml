@@ -25,7 +25,8 @@
             android:text="@string/title"
             android:textSize="28sp"
             android:textColor="@color/primary"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:fontFamily="@font/raleway"/>
     </LinearLayout>
 
 </RelativeLayout>
