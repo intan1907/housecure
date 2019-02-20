@@ -1,0 +1,7 @@
+Header Font - Raleway Regular
+Text Font - Lato Regular
+
+Primary color : #00b4cb
+Background color : #1f1e30
+Danger color : #cb003e
+Text color : #ffffff
