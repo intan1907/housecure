@@ -8,8 +8,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.app.Service;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 
 import java.util.Random;
@@ -20,6 +23,7 @@ public class ShakeService extends Service implements SensorEventListener {
     private float mAccel;
     private float mAccelCurrent;
     private float mAccelLast;
+    private Vibrator vibrator;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -28,7 +32,7 @@ public class ShakeService extends Service implements SensorEventListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("hehe", "sensor coy");
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI,
@@ -51,6 +55,11 @@ public class ShakeService extends Service implements SensorEventListener {
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
             MainActivity.hello.setTextColor(color);
+            if (Build.VERSION.SDK_INT >= 26) {
+                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(200);
+            }
         }
     }
 
