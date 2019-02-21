@@ -13,7 +13,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.util.Log;
 
 import java.util.Random;
 
@@ -57,8 +56,6 @@ public class ShakeService extends Service implements SensorEventListener {
             MainActivity.hello.setTextColor(color);
             if (Build.VERSION.SDK_INT >= 26) {
                 vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-            } else {
-                vibrator.vibrate(200);
             }
         }
     }
