@@ -59,9 +59,10 @@ public class MainActivity extends AppCompatActivity
 
         boolean isIntruder = mPreferences.getBoolean("INTRUDER", false);
         if (isIntruder) {
-            Log.d("hehe", "masuk intent");
-            Intent intent = new Intent(this, ShakeService.class);
-            startService(intent);
+            Intent intentAccelerator = new Intent(this, ShakeService.class);
+            Intent intentProximity = new Intent(this, CallProximityService.class);
+            startService(intentAccelerator);
+            startService(intentProximity);
             hello = findViewById(R.id.hello);
 
         }
