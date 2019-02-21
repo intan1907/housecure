@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="primary">#00b4cb</color>
     <color name="background">#1f1e30</color>
+    <color name="dangerColor">#cb003e</color>
+    <color name="textColor">#ffffff</color>
 </resources>
