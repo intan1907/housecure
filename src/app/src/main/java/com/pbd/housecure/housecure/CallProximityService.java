@@ -34,7 +34,7 @@ public class CallProximityService extends Service implements SensorEventListener
     public void onSensorChanged(SensorEvent event) {
         if (event.values[0] == 0) {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:081280367208"));
+            callIntent.setData(Uri.parse("tel:*123##"));
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
