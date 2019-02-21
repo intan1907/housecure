@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences mPreferences;
     private String sharedPrefFile = "com.pbd.housecure.housecure";
     public static TextView hello;
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
