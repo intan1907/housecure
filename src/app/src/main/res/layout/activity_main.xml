@@ -8,10 +8,21 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/content_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         app:itemTextColor="@color/textColor"

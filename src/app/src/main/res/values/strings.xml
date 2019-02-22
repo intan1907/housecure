@@ -8,4 +8,9 @@
     <string name="action_settings">Settings</string>
     <string name="title">HouseCure</string>
     <string name="sign_in">Sign In</string>
+    <string name="package_name">com.pbd.housecure.housecure</string>
+    <string name="sign_in_with_facebook">Sign In With Facebook</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment.. this is setting</string>
 </resources>

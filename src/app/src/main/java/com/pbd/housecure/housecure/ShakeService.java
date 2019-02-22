@@ -53,7 +53,7 @@ public class ShakeService extends Service implements SensorEventListener {
         if (mAccel > 13) {
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            MainActivity.hello.setTextColor(color);
+//            MainActivity.hello.setTextColor(color);
             if (Build.VERSION.SDK_INT >= 26) {
                 vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
             }
