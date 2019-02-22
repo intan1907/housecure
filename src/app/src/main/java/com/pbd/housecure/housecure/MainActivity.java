@@ -14,16 +14,20 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-//    private SharedPreferences mPreferences;
+    //    private SharedPreferences mPreferences;
 //    private String sharedPrefFile = getString(R.string.package_name);
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
+    private TextView actionBarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        setupActionBar();
 
         drawer = findViewById(R.id.drawer_layout);
 
@@ -66,6 +68,25 @@ public class MainActivity extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     }
 
+    private void setupActionBar() {
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        View viewActionBar = getLayoutInflater().inflate(R.layout.custom_app_bar, null);
+        ActionBar.LayoutParams params = new ActionBar.LayoutParams(//Center the textview in the ActionBar !
+                ActionBar.LayoutParams.WRAP_CONTENT,
+                ActionBar.LayoutParams.MATCH_PARENT,
+                Gravity.CENTER);
+        actionbar.setCustomView(viewActionBar, params);
+        actionbar.setDisplayShowCustomEnabled(true);
+        actionbar.setDisplayShowTitleEnabled(false);
+        actionbar.setHomeButtonEnabled(true);
+
+        actionBarTitle = findViewById(R.id.action_bar_title);
+        actionBarTitle.setText(getTitle());
+    }
+
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,12 +103,16 @@ public class MainActivity extends AppCompatActivity {
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
                 fragmentClass = HomeFragment.class;
+                setTitle(R.string.app_name);
                 break;
             case R.id.nav_log:
                 fragmentClass = LogFragment.class;
+                setTitle(R.string.nav_log);
                 break;
             case R.id.nav_settings:
-                fragmentClass = SettingFragment.class;
+                fragmentClass = SettingsFragment.class;
+                setTitle(R.string.nav_settings);
+                break;
         }
 
         try {
@@ -100,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
         menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
+        actionBarTitle.setText(getTitle());
         drawer.closeDrawers();
     }
 
@@ -125,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)){
+        if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
