@@ -10,6 +10,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="preferenceTheme">@style/MyPreferenceThemeOverlay</item>
+        <item name="alertDialogTheme">@style/AppAlertDialog</item>
         <item name="android:textColor">@color/textLightPrimary</item>
         <item name="android:textColorSecondary">@color/textLightSecondary</item>
     </style>

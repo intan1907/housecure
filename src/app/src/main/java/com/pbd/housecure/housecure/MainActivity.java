@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
-    private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     private TextView actionBarTitle;
 
@@ -56,12 +55,8 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         setupDrawerContent(navigationView);
-
-        Fragment homeFragment = new HomeFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
 
 //        boolean isIntruder = mPreferences.getBoolean("INTRUDER", false);
 //        if (isIntruder) {
