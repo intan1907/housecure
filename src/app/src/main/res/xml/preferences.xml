@@ -4,20 +4,22 @@
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="pref_sensors"
+        android:key="@string/pref_sensors_key"
         android:title="@string/setting_sensors"
-        app:iconSpaceReserved="false"/>
+        app:iconSpaceReserved="false"
+        android:summary="@string/pref_sensors_summary"/>
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="pref_notifications"
+        android:key="@string/pref_notifications_key"
         android:title="@string/setting_notifications"
-        app:iconSpaceReserved="false"/>
+        app:iconSpaceReserved="false"
+        android:summary="@string/pref_notifications_summary"/>
 
     <EditTextPreference
-        android:key="pref_emergency"
+        android:key="@string/pref_emergency_key"
         android:title="@string/setting_emergency"
-        android:defaultValue="911"
+        android:defaultValue="@string/pref_emergency_default_value"
         android:inputType="number"
         android:digits="0123456789"
         app:iconSpaceReserved="false"/>

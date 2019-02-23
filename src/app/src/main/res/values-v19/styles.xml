@@ -9,6 +9,7 @@
         <item name="elevation">0dp</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="preferenceTheme">@style/MyPreferenceThemeOverlay</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/textLightPrimary</item>
+        <item name="android:textColorSecondary">@color/textLightSecondary</item>
     </style>
 </resources>

@@ -16,6 +16,6 @@
         android:clickable="false"
         android:focusable="false"
         android:longClickable="false"
-        android:textColor="@color/textColor" />
+        android:textColor="@color/textLightPrimary" />
 
 </LinearLayout>
