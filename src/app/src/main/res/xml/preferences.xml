@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_sensors"
+        android:title="@string/setting_sensors" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_notifications"
+        android:title="@string/setting_notifications" />
+
+    <EditTextPreference
+        android:key="pref_emergency"
+        android:title="@string/setting_emergency"
+        />
+
+</PreferenceScreen>

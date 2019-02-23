@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -56,11 +57,15 @@ public class MainActivity extends AppCompatActivity {
 //        boolean isIntruder = mPreferences.getBoolean("INTRUDER", false);
 //        if (isIntruder) {
 //            Intent intentAccelerator = new Intent(this, ShakeService.class);
-//            Intent intentProximity = new Intent(this, CallProximityService.class);
+//            Intent intentProximity = new Intent(this, ProximityService.class);
 //            startService(intentAccelerator);
 //            startService(intentProximity);
 //
 //        }
+        // set home as default fragment
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.content_main, new HomeFragment());
+        tx.commit();
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -110,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(R.string.nav_log);
                 break;
             case R.id.nav_settings:
-                fragmentClass = SettingsFragment.class;
-                setTitle(R.string.nav_settings);
+//                fragmentClass = SettingsFragment.class;
+//                setTitle(R.string.nav_settings);
                 break;
         }
 
@@ -145,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
 //        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
 //        preferencesEditor.putBoolean("INTRUDER", true);
 //        preferencesEditor.apply();
-
     }
 
     @Override

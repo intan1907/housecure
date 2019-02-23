@@ -13,7 +13,7 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.ActivityCompat;
 
-public class CallProximityService extends Service implements SensorEventListener {
+public class ProximityService extends Service implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mProximity;
 
