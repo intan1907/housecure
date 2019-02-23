@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity {
     //    private SharedPreferences mPreferences;
@@ -131,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = SettingsFragment.class;
                 setTitle(R.string.nav_settings);
                 break;
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
         }
 
         try {
