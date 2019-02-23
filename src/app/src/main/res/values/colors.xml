@@ -2,9 +2,7 @@
 <resources>
     <color name="colorPrimary">#281c36</color>
     <color name="colorPrimaryDark">#231a2e</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="primary">#00b4cb</color>
-    <color name="background">#1f1e30</color>
-    <color name="dangerColor">#cb003e</color>
+    <color name="colorAccent">#00b4cb</color>
+    <color name="colorDanger">#cb003e</color>
     <color name="textColor">#ffffff</color>
 </resources>

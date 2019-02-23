@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(R.string.nav_log);
                 break;
             case R.id.nav_settings:
-//                fragmentClass = SettingsFragment.class;
-//                setTitle(R.string.nav_settings);
+                fragmentClass = SettingsFragment.class;
+                setTitle(R.string.nav_settings);
                 break;
         }
 

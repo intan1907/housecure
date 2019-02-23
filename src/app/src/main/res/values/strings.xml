@@ -10,7 +10,6 @@
     <string name="package_name">com.pbd.housecure.housecure</string>
     <string name="sign_in_with_facebook">Sign In With Facebook</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment.. this is setting</string>
     <string name="nav_log">Log</string>
     <string name="nav_settings">Settings</string>
@@ -18,4 +17,8 @@
     <string name="setting_sensors">Sensors</string>
     <string name="setting_notifications">Notifications</string>
     <string name="setting_emergency">Emergency</string>
+    <string name="btnSave">Save</string>
+    <string name="pref_notifications_summary">Show notifications from Housecure</string>
+    <string name="pref_emergency_summary">Emergency call number</string>
+    <string name="pref_sensors_summary">Activate sensors for Housecure service</string>
 </resources>

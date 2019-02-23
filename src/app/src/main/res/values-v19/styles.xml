@@ -8,5 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="elevation">0dp</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="preferenceTheme">@style/MyPreferenceThemeOverlay</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
 </resources>
