@@ -25,7 +25,7 @@
         </activity>
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
         <service android:name=".ShakeService"></service>
-        <service android:name=".CallProximityService"></service>
+        <service android:name=".ProximityService"></service>
 
     </application>
 
