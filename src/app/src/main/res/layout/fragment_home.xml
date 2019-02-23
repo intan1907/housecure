@@ -3,12 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:background="@color/background"
+    android:layout_weight="0.6">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:src="@drawable/intruder_alert"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Intruder Alert"
+            android:textAlignment="center"
+            android:textColor="@color/dangerColor"
+            android:textSize="@dimen/header_text"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="@font/raleway"/>
+
+    </LinearLayout>
 
 </FrameLayout>
