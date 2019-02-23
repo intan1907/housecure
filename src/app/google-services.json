@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "700785978933",
+    "firebase_url": "https://hou-2c6c0.firebaseio.com",
+    "project_id": "hou-2c6c0",
+    "storage_bucket": "hou-2c6c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700785978933:android:4a0b2d746f144024",
+        "android_client_info": {
+          "package_name": "com.pbd.housecure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700785978933-itnm6l8a6ka0dv86mpmgun8t7et606b9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC49xY6Lh8m3AoJORF-l7Ipip4MxMcOAfw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700785978933:android:646611cde3891b1d",
+        "android_client_info": {
+          "package_name": "com.pbd.housecure.housecure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700785978933-sg0tjr478hkrrg89313v6acemo065ndj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pbd.housecure.housecure",
+            "certificate_hash": "88dceb9c22f696053c7d58c8e4e156fe0f7c21fc"
+          }
+        },
+        {
+          "client_id": "700785978933-itnm6l8a6ka0dv86mpmgun8t7et606b9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC49xY6Lh8m3AoJORF-l7Ipip4MxMcOAfw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700785978933-itnm6l8a6ka0dv86mpmgun8t7et606b9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
