@@ -24,6 +24,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     //    private SharedPreferences mPreferences;
 //    private String sharedPrefFile = getString(R.string.package_name);
+    private final String FRAGMENT_CONTENT = "fragment_content";
+    private int content;
+
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -66,10 +69,15 @@ public class MainActivity extends AppCompatActivity {
 //            startService(intentProximity);
 //
 //        }
-        // set home as default fragment
-        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.content_main, new HomeFragment());
-        tx.commit();
+
+        if (savedInstanceState == null) {
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.content_main, new HomeFragment());
+            tx.commit();
+        } else {
+            int contentId = savedInstanceState.getInt(FRAGMENT_CONTENT);
+            setContentMain(contentId);
+        }
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -106,10 +114,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void selectDrawerItem(MenuItem menuItem) {
+
+    private void setContentMain(int contentId) {
         Fragment fragment = null;
         Class fragmentClass = HomeFragment.class;
-        switch (menuItem.getItemId()) {
+        switch (contentId) {
             case R.id.nav_home:
                 fragmentClass = HomeFragment.class;
                 setTitle(R.string.app_name);
@@ -119,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(R.string.nav_log);
                 break;
             case R.id.nav_settings:
-//                fragmentClass = SettingsFragment.class;
-//                setTitle(R.string.nav_settings);
+                fragmentClass = SettingsFragment.class;
+                setTitle(R.string.nav_settings);
                 break;
         }
 
@@ -133,8 +142,13 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_main, fragment).commit();
 
-        menuItem.setChecked(true);
         actionBarTitle.setText(getTitle());
+        content = contentId;
+    }
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        setContentMain(menuItem.getItemId());
+        menuItem.setChecked(true);
         drawer.closeDrawers();
     }
 
@@ -174,5 +188,11 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         toggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(FRAGMENT_CONTENT, content);
     }
 }

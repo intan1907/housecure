@@ -1,8 +1,15 @@
 <resources>
 
     <style name="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="elevation">0dp</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="preferenceTheme">@style/MyPreferenceThemeOverlay</item>
+        <item name="android:textColor">@color/textLightPrimary</item>
+        <item name="android:textColorSecondary">@color/textLightSecondary</item>
     </style>
 </resources>
