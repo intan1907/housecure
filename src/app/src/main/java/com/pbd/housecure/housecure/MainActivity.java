@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         setupDrawerContent(navigationView);
 
+        Fragment homeFragment = new HomeFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
+
 //        boolean isIntruder = mPreferences.getBoolean("INTRUDER", false);
 //        if (isIntruder) {
 //            Intent intentAccelerator = new Intent(this, ShakeService.class);

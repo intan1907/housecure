@@ -24,20 +24,14 @@
             android:fontFamily="@font/raleway"
             android:textAlignment="center"/>
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/facebook"
-            android:contentDescription="@string/sign_in_with_facebook"
-            android:background="@null"
-            android:layout_marginTop="30sp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/google"
             android:background="@null"
-            android:layout_marginTop="10sp"/>
+            android:layout_marginTop="10sp"
+            android:onClick="signIn"/>
 
 
     </LinearLayout>
