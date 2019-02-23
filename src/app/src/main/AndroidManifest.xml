@@ -26,6 +26,11 @@
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
         <service android:name=".ShakeService"></service>
         <service android:name=".ProximityService"></service>
+        <service android:name=".NotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
     </application>
 

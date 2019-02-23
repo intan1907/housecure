@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient googleClient;
@@ -70,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         updateUI(null);
                     }
+                    getToken();
                 }
             });
     }
@@ -79,5 +83,20 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void getToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+            .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                @Override
+                public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                    if (!task.isSuccessful()) {
+                        return;
+                    }
+
+                    String token = task.getResult().getToken();
+                    Log.d("TOKEN", token);
+                }
+            });
     }
 }
