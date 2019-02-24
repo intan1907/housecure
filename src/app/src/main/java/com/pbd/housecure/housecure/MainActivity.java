@@ -1,7 +1,6 @@
 package com.pbd.housecure.housecure;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void setContentMain(int contentId) {
         Fragment fragment = null;
         Class fragmentClass = HomeFragment.class;
@@ -103,10 +101,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_home:
                 fragmentClass = HomeFragment.class;
                 setTitle(R.string.app_name);
-                break;
-            case R.id.nav_log:
-                fragmentClass = LogFragment.class;
-                setTitle(R.string.nav_log);
                 break;
             case R.id.nav_settings:
                 fragmentClass = SettingsFragment.class;

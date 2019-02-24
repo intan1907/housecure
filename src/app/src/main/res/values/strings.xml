@@ -10,11 +10,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="nav_log">Log</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_home">Home</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment.. this is setting</string>
 
     <string name="setting_sensors">Sensors</string>
     <string name="setting_notifications">Notifications</string>
