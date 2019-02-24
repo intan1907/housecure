@@ -23,14 +23,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/alert_intruder"
+            android:text="@string/alert_text"
             android:textAlignment="center"
             android:textColor="@color/colorDanger"
             android:textSize="@dimen/header_text"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="@font/raleway"
             tools:targetApi="jelly_bean" />
-
+            android:id="@+id/status_text"/>
     </LinearLayout>
 
 </FrameLayout>
