@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -70,16 +71,23 @@ public class AddDeviceFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        final Button button = (Button) getView().findViewById(R.id.add);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-//                RequestQueue queue = Volley.newRequestQueue(this);
-//                String url = getResources().getString(R.string.api_host) + "/register";
+//        final Button button = (Button) getView().findViewById(R.id.add);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+//                String url = getResources().getString(R.string.api_host) + "/add";
 //
+//                EditText editRoom = (EditText) getView().findViewById(R.id.room);
+//                EditText editDeviceId = (EditText) getView().findViewById(R.id.device_id);
+//                String room = editRoom.getText().toString();
+//                String device_id = editDeviceId.getText().toString();
+//
+//                Log.d("testc", room);
+//                Log.d("testc", device_id);
 //                JSONObject obj = new JSONObject();
 //                try {
-//                    obj.put("", fcmKey);
-//                    obj.put("user_key", userKey);
+//                    obj.put("room", room);
+//                    obj.put("device_id", device_id);
 //                } catch (Exception e) {
 //                    Log.e("VOLLEY", e.toString());
 //                }
@@ -97,10 +105,10 @@ public class AddDeviceFragment extends Fragment {
 //                    }
 //                }
 //                );
-//
+
 //                queue.add(jsonRequest);
-            }
-        });
+//            }
+//        });
     }
 
     @Override
