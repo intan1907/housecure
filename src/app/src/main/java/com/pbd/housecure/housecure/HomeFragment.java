@@ -1,6 +1,8 @@
 package com.pbd.housecure.housecure;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,11 +45,15 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        queue = Volley.newRequestQueue(getContext());
-        schedule();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        queue = Volley.newRequestQueue(getContext());
+        schedule();
+    }
 
     private void schedule() {
         Timer timer = new Timer();
