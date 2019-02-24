@@ -14,18 +14,22 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_height="300dp"
-            android:layout_width="match_parent"
-            android:src="@drawable/intruder_alert"/>
+            android:layout_height="220dp"
+            android:layout_width="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/intruder_alert"
+            android:layout_gravity="center_horizontal"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Intruder Alert"
+            android:text="@string/alert_intruder"
             android:textAlignment="center"
             android:textColor="@color/colorDanger"
             android:textSize="@dimen/header_text"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:fontFamily="@font/raleway"/>
+            android:fontFamily="@font/raleway"
+            tools:targetApi="jelly_bean" />
 
     </LinearLayout>
 

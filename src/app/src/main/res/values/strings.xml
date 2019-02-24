@@ -30,4 +30,6 @@
     <string name="default_notification_channel_id">HOUSECURE_CHANNEL_ID</string>
     <string name="fcm_message">Intruder Alert!</string>
     <string name="api_host">http://192.168.0.103:5000</string>
+    <string name="alert_intruder">Intruder Alert</string>
+
 </resources>
