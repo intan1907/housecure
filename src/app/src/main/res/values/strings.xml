@@ -29,7 +29,7 @@
     <string name="nav_logout">Logout</string>
     <string name="default_notification_channel_id">HOUSECURE_CHANNEL_ID</string>
     <string name="fcm_message">Intruder Alert!</string>
-    <string name="api_host">http://192.168.0.103:5000</string>
+    <string name="api_host">http://e33f181e.ngrok.io</string>
     <string name="safe_text">No Intruder Detected</string>
     <string name="alert_text">Intruder Alert</string>
 </resources>

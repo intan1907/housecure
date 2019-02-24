@@ -35,6 +35,7 @@ import java.util.TimerTask;
  */
 public class HomeFragment extends Fragment {
     RequestQueue queue;
+    Timer timer;
 
     public HomeFragment() {
 
@@ -51,12 +52,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        timer = new Timer();
         queue = Volley.newRequestQueue(getContext());
         schedule();
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        queue.cancelAll("status_request");
+        timer.cancel();
+    }
+
     private void schedule() {
-        Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -92,7 +100,7 @@ public class HomeFragment extends Fragment {
                 return params;
             }
         };
-
+        jsonRequest.setTag("status_request");
         queue.add(jsonRequest);
     }
 
