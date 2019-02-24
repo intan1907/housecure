@@ -38,6 +38,7 @@ public class ProximityService extends Service implements SensorEventListener {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
+            callIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(callIntent);
         } else {
         }
