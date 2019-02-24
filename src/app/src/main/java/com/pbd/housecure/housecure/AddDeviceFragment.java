@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -67,6 +68,7 @@ public class AddDeviceFragment extends Fragment {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Log.d("VOLLEY", response.toString());
+                                createToast(response);
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -87,6 +89,17 @@ public class AddDeviceFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void createToast(JSONObject response) {
+        try {
+            String deviceId = response.getString("device_id");
+            Toast toast = Toast.makeText(getContext(), "Added device : " + deviceId, Toast.LENGTH_LONG);
+            toast.show();
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(getContext(), "Fail adding device", Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
 
