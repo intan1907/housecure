@@ -8,9 +8,6 @@
             android:id="@+id/nav_home"
             android:title="@string/nav_home"/>
         <item
-            android:id="@+id/nav_log"
-            android:title="@string/nav_log"/>
-        <item
             android:id="@+id/nav_add_device"
             android:title="Add Device"/>
         <item

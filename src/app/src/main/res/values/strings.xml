@@ -37,5 +37,4 @@
     <string name="pref_location_key">pref_location</string>
     <string name="pref_location_summary">Your house location</string>
     <string name="setting_location">Set house location</string>
-    <string name="nav_log">Log</string>
 </resources>

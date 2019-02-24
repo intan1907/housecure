@@ -122,10 +122,6 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = HomeFragment.class;
                 setTitle(R.string.app_name);
                 break;
-            case R.id.nav_log:
-                fragmentClass = LogFragment.class;
-                setTitle(R.string.nav_log);
-                break;
             case R.id.nav_add_device:
                 fragmentClass = AddDeviceFragment.class;
                 setTitle(R.string.nav_add_device);
