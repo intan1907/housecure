@@ -8,6 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,6 +29,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient googleClient;
@@ -67,13 +76,14 @@ public class LoginActivity extends AppCompatActivity {
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    FirebaseUser user = null;
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
+                        user = mAuth.getCurrentUser();
                         updateUI(user);
                     } else {
                         updateUI(null);
                     }
-                    getToken();
+                    register(user);
                 }
             });
     }
@@ -85,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void getToken() {
+    private void register(final FirebaseUser user) {
         FirebaseInstanceId.getInstance().getInstanceId()
             .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                 @Override
@@ -94,9 +104,40 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
 
-                    String token = task.getResult().getToken();
-                    Log.d("TOKEN", token);
+                    String fcmKey = task.getResult().getToken();
+                    String userKey = user.getUid();
+                    sendRequest(fcmKey, userKey);
+                    Log.d("TOKEN", fcmKey);
                 }
             });
+    }
+
+    private void sendRequest(String fcmKey, String userKey) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = getResources().getString(R.string.api_host) + "/register";
+
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("fcm_key", fcmKey);
+            obj.put("user_key", userKey);
+        } catch (Exception e) {
+            Log.e("VOLLEY", e.toString());
+        }
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("VOLLEY", response.toString());
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("VOLLEY", error.toString());
+                }
+            }
+        );
+
+        queue.add(jsonRequest);
     }
 }
