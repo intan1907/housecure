@@ -4,4 +4,8 @@
     <style name="MyNavigationView" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/raleway</item>
     </style>
+
+    <style name="PreferenceTextAppearance" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/raleway</item>
+    </style>
 </resources>

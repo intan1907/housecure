@@ -29,4 +29,7 @@
     <string name="api_host">http://e33f181e.ngrok.io</string>
     <string name="safe_text">No Intruder Detected</string>
     <string name="alert_text">Intruder Alert</string>
+    <string name="pref_location_key">pref_location</string>
+    <string name="pref_location_summary">Your house location</string>
+    <string name="setting_location">Set house location</string>
 </resources>

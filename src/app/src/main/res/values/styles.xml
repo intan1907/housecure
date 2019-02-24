@@ -12,6 +12,7 @@
         <item name="alertDialogTheme">@style/AppAlertDialog</item>
         <item name="android:textColor">@color/textLightPrimary</item>
         <item name="android:textColorSecondary">@color/textLightSecondary</item>
+        <item name="android:typeface">@font/raleway</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
