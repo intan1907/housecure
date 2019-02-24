@@ -13,8 +13,7 @@
     <string name="nav_log">Log</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_home">Home</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment.. this is setting</string>
+    <string name="nav_add_device">Add Device</string>
 
     <string name="setting_sensors">Sensors</string>
     <string name="setting_notifications">Notifications</string>
@@ -32,4 +31,11 @@
     <string name="api_host">http://e33f181e.ngrok.io</string>
     <string name="safe_text">No Intruder Detected</string>
     <string name="alert_text">Intruder Alert</string>
+    <string name="search_text">Search text</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Room">Room</string>
+    <string name="DeviceID">DeviceID</string>
+    <string name="Add">Add</string>
 </resources>

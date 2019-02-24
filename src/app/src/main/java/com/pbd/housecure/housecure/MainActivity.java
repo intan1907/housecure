@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -107,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_log:
                 fragmentClass = LogFragment.class;
                 setTitle(R.string.nav_log);
+                break;
+            case R.id.nav_add_device:
+                fragmentClass = AddDeviceFragment.class;
+                setTitle(R.string.nav_add_device);
                 break;
             case R.id.nav_settings:
                 fragmentClass = SettingsFragment.class;

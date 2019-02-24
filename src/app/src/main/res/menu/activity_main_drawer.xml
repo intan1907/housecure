@@ -11,6 +11,9 @@
             android:id="@+id/nav_log"
             android:title="@string/nav_log"/>
         <item
+            android:id="@+id/nav_add_device"
+            android:title="Add Device"/>
+        <item
             android:id="@+id/nav_settings"
             android:title="@string/nav_settings"/>
         <item
