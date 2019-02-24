@@ -24,16 +24,18 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-
+    RequestQueue queue;
 
     public HomeFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -41,14 +43,26 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        checkStatus();
+        queue = Volley.newRequestQueue(getContext());
+        schedule();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
 
+    private void schedule() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                checkStatus();
+            }
+        };
+
+        timer.schedule(timerTask, 0,5000);
+    }
+
 
     private void checkStatus() {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = getResources().getString(R.string.api_host) + "/status";
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
