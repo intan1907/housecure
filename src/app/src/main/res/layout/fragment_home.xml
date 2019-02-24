@@ -19,16 +19,16 @@
             android:layout_width="wrap_content"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:src="@drawable/intruder_alert"
+            android:src="@drawable/safe"
             android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/alert_text"
+            android:text="@string/safe_text"
             android:textAlignment="center"
-            android:textColor="@color/colorDanger"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/header_text"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="@font/raleway"

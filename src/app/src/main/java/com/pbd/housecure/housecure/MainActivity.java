@@ -24,8 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
-    //    private SharedPreferences mPreferences;
-//    private String sharedPrefFile = getString(R.string.package_name);
     private final String FRAGMENT_CONTENT = "fragment_content";
     private int content;
 
@@ -38,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        preferencesEditor.putBoolean("INTRUDER", true);
-//        preferencesEditor.apply();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         setupDrawerContent(navigationView);
-
-//        boolean isIntruder = mPreferences.getBoolean("INTRUDER", false);
-//        if (isIntruder) {
-//            Intent intentAccelerator = new Intent(this, ShakeService.class);
-//            Intent intentProximity = new Intent(this, ProximityService.class);
-//            startService(intentAccelerator);
-//            startService(intentProximity);
-//
-//        }
 
         if (savedInstanceState == null) {
             FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
@@ -161,14 +145,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        preferencesEditor.putBoolean("INTRUDER", true);
-//        preferencesEditor.apply();
     }
 
     @Override
