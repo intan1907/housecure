@@ -71,51 +71,49 @@ public class AddDeviceFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-//        final Button button = (Button) getView().findViewById(R.id.add);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
-//                String url = getResources().getString(R.string.api_host) + "/add";
-//
-//                EditText editRoom = (EditText) getView().findViewById(R.id.room);
-//                EditText editDeviceId = (EditText) getView().findViewById(R.id.device_id);
-//                String room = editRoom.getText().toString();
-//                String device_id = editDeviceId.getText().toString();
-//
-//                Log.d("testc", room);
-//                Log.d("testc", device_id);
-//                JSONObject obj = new JSONObject();
-//                try {
-//                    obj.put("room", room);
-//                    obj.put("device_id", device_id);
-//                } catch (Exception e) {
-//                    Log.e("VOLLEY", e.toString());
-//                }
-//
-//                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                Log.d("VOLLEY", response.toString());
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("VOLLEY", error.toString());
-//                    }
-//                }
-//                );
-
-//                queue.add(jsonRequest);
-//            }
-//        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_device, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_device, container, false);
+        Button button = (Button) view.findViewById(R.id.add);
+        button.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+                String url = getResources().getString(R.string.api_host) + "/add";
+
+                EditText editRoom = (EditText) getView().findViewById(R.id.room);
+                EditText editDeviceId = (EditText) getView().findViewById(R.id.device_id);
+                String room = editRoom.getText().toString();
+                String device_id = editDeviceId.getText().toString();
+
+                JSONObject obj = new JSONObject();
+                try {
+                    obj.put("room", room);
+                    obj.put("device_id", device_id);
+                } catch (Exception e) {
+                    Log.e("VOLLEY", e.toString());
+                }
+
+                JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Log.d("VOLLEY", response.toString());
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("VOLLEY", error.toString());
+                    }
+                }
+                );
+
+                queue.add(jsonRequest);
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
