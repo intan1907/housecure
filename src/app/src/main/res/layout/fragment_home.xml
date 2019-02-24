@@ -16,16 +16,18 @@
         <ImageView
             android:layout_height="300dp"
             android:layout_width="match_parent"
-            android:src="@drawable/intruder_alert"/>
+            android:src="@drawable/intruder_alert"
+            android:id="@+id/status_image"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Intruder Alert"
+            android:text="@string/alert_text"
             android:textAlignment="center"
             android:textColor="@color/colorDanger"
             android:textSize="@dimen/header_text"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:fontFamily="@font/raleway"/>
+            android:fontFamily="@font/raleway"
+            android:id="@+id/status_text"/>
 
     </LinearLayout>
 
