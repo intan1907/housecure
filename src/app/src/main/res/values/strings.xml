@@ -10,7 +10,6 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="nav_log">Log</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_home">Home</string>
     <string name="nav_add_device">Add Device</string>
@@ -32,10 +31,12 @@
     <string name="safe_text">No Intruder Detected</string>
     <string name="alert_text">Intruder Alert</string>
     <string name="search_text">Search text</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Room">Room</string>
     <string name="DeviceID">DeviceID</string>
     <string name="Add">Add</string>
+    <string name="pref_location_key">pref_location</string>
+    <string name="pref_location_summary">Your house location</string>
+    <string name="setting_location">Set house location</string>
+    <string name="nav_log">Log</string>
 </resources>

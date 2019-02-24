@@ -39,9 +39,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getContext());
-        boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
-        switchNotification.setChecked(areNotificationsEnabled);
+        switchNotification.setChecked(NotificationManagerCompat
+                .from(getContext())
+                .areNotificationsEnabled());
     }
 
     private void setNotificationListener() {

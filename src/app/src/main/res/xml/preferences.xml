@@ -5,24 +5,30 @@
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/pref_sensors_key"
+        android:summary="@string/pref_sensors_summary"
         android:title="@string/setting_sensors"
-        app:iconSpaceReserved="false"
-        android:summary="@string/pref_sensors_summary"/>
+        app:iconSpaceReserved="false" />
 
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/pref_notifications_key"
+        android:summary="@string/pref_notifications_summary"
         android:title="@string/setting_notifications"
-        app:iconSpaceReserved="false"
-        android:summary="@string/pref_notifications_summary"/>
+        app:iconSpaceReserved="false" />
 
     <EditTextPreference
-        android:key="@string/pref_emergency_key"
-        android:title="@string/setting_emergency"
         android:defaultValue="@string/pref_emergency_default_value"
         android:dialogLayout="@layout/pref_dialog_edittext"
-        android:inputType="number"
         android:digits="0123456789"
-        app:iconSpaceReserved="false"/>
+        android:key="@string/pref_emergency_key"
+        android:title="@string/setting_emergency"
+        app:iconSpaceReserved="false" />
+
+    <Preference
+        android:defaultValue="lat:long:"
+        android:key="@string/pref_location_key"
+        android:summary="@string/pref_location_summary"
+        android:title="@string/setting_location"
+        app:iconSpaceReserved="false" />
 
 </PreferenceScreen>

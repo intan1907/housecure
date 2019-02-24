@@ -1,7 +1,6 @@
 package com.pbd.housecure.housecure;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,9 +29,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HomeFragment extends Fragment {
     RequestQueue queue;
     Timer timer;
@@ -45,7 +41,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
