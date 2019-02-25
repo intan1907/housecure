@@ -213,4 +213,13 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt(FRAGMENT_CONTENT, content);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent(getApplicationContext(), ShakeService.class);
+        stopService(intent);
+        intent = new Intent(getApplicationContext(), ProximityService.class);
+        stopService(intent);
+    }
 }
