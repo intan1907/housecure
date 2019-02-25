@@ -19,7 +19,6 @@
     <EditTextPreference
         android:defaultValue="@string/pref_emergency_default_value"
         android:dialogLayout="@layout/pref_dialog_edittext"
-        android:digits="0123456789"
         android:key="@string/pref_emergency_key"
         android:title="@string/setting_emergency"
         app:iconSpaceReserved="false" />
