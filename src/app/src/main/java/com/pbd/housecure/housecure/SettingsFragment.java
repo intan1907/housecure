@@ -39,6 +39,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private Preference prefLocation;
     private GoogleApiClient googleApiClient = null;
 
+    public static final String TAG = "Setting Fragment";
+
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -56,8 +58,31 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (!isGPSEnable() && hasGPSDevice(getContext())) {
-            enableLoc();
+            showEnableLocationDialog();
         }
+    }
+
+    public void createGoogleApiClient() {
+        googleApiClient = new GoogleApiClient.Builder(getContext())
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(Bundle bundle) {
+
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+                        googleApiClient.connect();
+                    }
+                })
+                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+                        Log.d("Location error", "Location error " + connectionResult.getErrorCode());
+                    }
+                }).build();
     }
 
     @Override
@@ -119,7 +144,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 if (!isGPSEnable() && hasGPSDevice(getContext())) {
                     Toast.makeText(getContext(), "GPS not enabled. Turn on GPS to continue", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Location has been set", Toast.LENGTH_SHORT).show();
+                    GPSTracker gps = new GPSTracker(getContext());
+                    double lat = gps.getLatitude();
+                    double lng = gps.getLongitude();
+
+                    String longitude = "Longitude: " + lat;
+                    Log.v(TAG, longitude);
+                    String latitude = "Latitude: " + lng;
+                    Log.v(TAG, latitude);
+
+                    Toast.makeText(getContext(), latitude + " " + longitude, Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -127,8 +161,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private boolean isGPSEnable() {
-        final LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-        return manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
     private boolean hasGPSDevice(Context context) {
@@ -142,27 +176,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         return providers.contains(LocationManager.GPS_PROVIDER);
     }
 
-    private void enableLoc() {
-        googleApiClient = new GoogleApiClient.Builder(getContext())
-                .addApi(LocationServices.API)
-                .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
-                    @Override
-                    public void onConnected(Bundle bundle) {
-
-                    }
-
-                    @Override
-                    public void onConnectionSuspended(int i) {
-                        googleApiClient.connect();
-                    }
-                })
-                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-                        Log.d("Location error", "Location error " + connectionResult.getErrorCode());
-                    }
-                }).build();
+    private void showEnableLocationDialog() {
+        if (googleApiClient == null) {
+            createGoogleApiClient();
+        }
         googleApiClient.connect();
 
         LocationRequest locationRequest = LocationRequest.create();
@@ -175,7 +192,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         builder.setAlwaysShow(true);
 
         PendingResult<LocationSettingsResult> result =
-                LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+                LocationServices
+                        .SettingsApi.checkLocationSettings(googleApiClient, builder.build());
         result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
             @Override
             public void onResult(@NonNull LocationSettingsResult result) {
@@ -196,4 +214,3 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         });
     }
 }
-
