@@ -1,10 +1,13 @@
 package com.pbd.housecure.housecure;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -12,6 +15,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.Preference;
@@ -32,6 +36,7 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.util.List;
+import java.util.Locale;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private SharedPreferences sharedPreferences;
@@ -144,14 +149,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 if (!isGPSEnable() && hasGPSDevice(getContext())) {
                     Toast.makeText(getContext(), "GPS not enabled. Turn on GPS to continue", Toast.LENGTH_SHORT).show();
                 } else {
-                    GPSTracker gps = new GPSTracker(getContext());
-                    double lat = gps.getLatitude();
-                    double lng = gps.getLongitude();
-
+                    LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+                    if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return false;
+                    }
+                    Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    double lat = location.getLatitude();
+                    double lng = location.getLongitude();
                     String longitude = "Longitude: " + lat;
                     Log.v(TAG, longitude);
                     String latitude = "Latitude: " + lng;
                     Log.v(TAG, latitude);
+
+                    String loc = String.format(Locale.US, "%.6f,%.6f", lat, lng);
+
+                    sharedPreferences.edit().putString(getString(R.string.pref_location_key), loc).apply();
+                    Log.v(TAG, sharedPreferences.getString(getString(R.string.pref_location_key), "FAIL"));
 
                     Toast.makeText(getContext(), latitude + " " + longitude, Toast.LENGTH_SHORT).show();
                 }
