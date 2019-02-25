@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
             int contentId = savedInstanceState.getInt(FRAGMENT_CONTENT);
             setContentMain(contentId);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         startServices();
     }
 
@@ -78,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(getApplicationContext(), ProximityService.class);
             startService(intent);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent intent = new Intent(getApplicationContext(), ShakeService.class);
+        stopService(intent);
+        intent = new Intent(getApplicationContext(), ProximityService.class);
+        stopService(intent);
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
