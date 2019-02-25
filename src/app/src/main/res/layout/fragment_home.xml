@@ -33,6 +33,19 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="@font/raleway"
             tools:targetApi="jelly_bean" />
+
+        <Button
+            android:id="@+id/danger_house"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/openMap"
+            android:ellipsize="start"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorDanger"
+            android:fontFamily="@font/raleway"
+            android:background="@drawable/danger_border"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </FrameLayout>

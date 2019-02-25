@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -110,6 +111,7 @@ public class HomeFragment extends Fragment {
 
         ImageView imageView = getView().findViewById(R.id.status_image);
         TextView textView = getView().findViewById(R.id.status_text);
+        Button dangerButton = getView().findViewById(R.id.danger_house);
 
         if (status) {
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.safe));
