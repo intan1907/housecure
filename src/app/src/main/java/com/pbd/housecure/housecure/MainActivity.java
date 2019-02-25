@@ -1,12 +1,15 @@
 package com.pbd.housecure.housecure;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -76,11 +79,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startServices() {
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Log.d("Location", "Permission not granted");
+            return;
+        }
         if (mPreferences.getBoolean(getResources().getString(R.string.pref_sensors_key), false)) {
             Log.d("SENSOR", "TURNED ON!");
             Intent intent = new Intent(getApplicationContext(), ShakeService.class);
             startService(intent);
             intent = new Intent(getApplicationContext(), ProximityService.class);
+            startService(intent);
+            intent = new Intent(getApplicationContext(), GPSTracker.class);
             startService(intent);
         }
     }
@@ -203,5 +212,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(FRAGMENT_CONTENT, content);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent(getApplicationContext(), ShakeService.class);
+        stopService(intent);
+        intent = new Intent(getApplicationContext(), ProximityService.class);
+        stopService(intent);
     }
 }
