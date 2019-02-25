@@ -2,6 +2,8 @@ package com.pbd.housecure.housecure;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -117,10 +119,21 @@ public class HomeFragment extends Fragment {
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.safe));
             textView.setText(getString(R.string.safe_text));
             textView.setTextColor(getResources().getColor(R.color.colorAccent));
+            dangerButton.setVisibility(View.GONE);
         } else {
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.intruder_alert));
             textView.setText(getString(R.string.alert_text));
             textView.setTextColor(getResources().getColor(R.color.colorDanger));
+            dangerButton.setVisibility(View.VISIBLE);
+            dangerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+                }
+            });
         }
     }
 
