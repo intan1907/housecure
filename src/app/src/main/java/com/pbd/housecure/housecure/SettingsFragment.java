@@ -149,11 +149,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 if (!isGPSEnable() && hasGPSDevice(getContext())) {
                     Toast.makeText(getContext(), "GPS not enabled. Turn on GPS to continue", Toast.LENGTH_SHORT).show();
                 } else {
-                    LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+                    /*LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
                     if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         return false;
                     }
                     Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    double lat = location.getLatitude();
+                    double lng = location.getLongitude();*/
+
+                    GPSTracker gps = new GPSTracker(getContext());
+                    Location location = gps.getLocation();
                     double lat = location.getLatitude();
                     double lng = location.getLongitude();
                     String longitude = "Longitude: " + lat;

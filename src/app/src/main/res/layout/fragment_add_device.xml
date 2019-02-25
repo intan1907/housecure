@@ -30,7 +30,7 @@
             android:ellipsize="start"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:background="@drawable/textbox"
+            android:background="@drawable/border"
             android:textColor="#ffffff"
             android:fontFamily="@font/raleway" />
     </LinearLayout>
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:ellipsize="start"
-            android:background="@drawable/textbox"
+            android:background="@drawable/border"
             android:textColor="#ffffff"
             android:fontFamily="@font/raleway"/>
     </LinearLayout>
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="@string/Add"
-        android:ellipsize="start"
+        android:textColor="@color/colorAccent"
         android:background="@drawable/border"/>
 
 </LinearLayout>
